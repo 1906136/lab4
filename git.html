@@ -1,0 +1,91 @@
+
+<html>
+<head>
+<style>
+h1{background-color:tomato;font-family:algerian;font-size:42;}
+body{background-color:black; color:white;font-size:25;font-family:algerian;}
+h2{background-color:orange;font-family:algerian;font-size:31;}
+h7{background-color:gray;font-family:algerian;font-size:26;}
+</style></head>
+<body>
+
+
+<h1><b><i>About Version Control</i></b></h1>
+<p>
+
+If you are a graphic or web designer and want to keep every version of an image or layout (which you would most certainly want to), a Version Control System (VCS) is a very wise thing to use. It allows you to revert selected files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when, and more. Using a VCS also generally means that if you screw things up or lose files, you can easily recover. In addition, you get all this for very little overhead.</p>
+
+
+
+<h2>Local Version Control Systems</h2>
+<p>
+Many people’s version-control method of choice is to copy files into another directory (perhaps a time-stamped directory, if they’re clever). This approach is very common because it is so simple, but it is also incredibly error prone. It is easy to forget which directory you’re in and accidentally write to the wrong file or copy over files you don’t mean to.
+
+To deal with this issue, programmers long ago developed local VCSs that had a simple database that kept all the changes to files under revision control.One of the most popular VCS tools was a system called RCS, which is still distributed with many computers today. RCS works by keeping patch sets (that is, the differences between files) in a special format on disk; it can then re-create what any file looked like at any point in time by adding up all the patches.
+</p>
+<img src="local.png" height="200" width="250">
+
+
+<h2>Centralized Version Control Systems</h2>
+<p>
+The next major issue that people encounter is that they need to collaborate with developers on other systems. To deal with this problem, Centralized Version Control Systems (CVCSs) were developed. These systems (such as CVS, Subversion, and Perforce) have a single server that contains all the versioned files, and a number of clients that check out files from that central place. For many years, this has been the standard for version control.
+This setup offers many advantages, especially over local VCSs. For example, everyone knows to a certain degree what everyone else on the project is doing. Administrators have fine-grained control over who can do what, and it’s far easier to administer a CVCS than it is to deal with local databases on every client.
+
+However, this setup also has some serious downsides. The most obvious is the single point of failure that the centralized server represents. If that server goes down for an hour, then during that hour nobody can collaborate at all or save versioned changes to anything they’re working on. If the hard disk the central database is on becomes corrupted, and proper backups haven’t been kept, you lose absolutely everything — the entire history of the project except whatever single snapshots people happen to have on their local machines. Local VCS systems suffer from this same problem — whenever you have the entire history of the project in a single place, you risk losing everything.</p><img src="centralized.png" height="200" width="250">
+
+
+
+<h2>Distributed Version Control Systems</h2><p>
+This is where Distributed Version Control Systems (DVCSs) step in. In a DVCS (such as Git, Mercurial, Bazaar or Darcs), clients don’t just check out the latest snapshot of the files; rather, they fully mirror the repository, including its full history. Thus, if any server dies, and these systems were collaborating via that server, any of the client repositories can be copied back up to the server to restore it. Every clone is really a full backup of all the data.Furthermore, many of these systems deal pretty well with having several remote repositories they can work with, so you can collaborate with different groups of people in different ways simultaneously within the same project. This allows you to set up several types of workflows that aren’t possible in centralized systems, such as hierarchical models.</p>
+<img src="distributed.png" height="200" width="300">
+
+
+<div>
+<h1><b><i>
+Git commands</b></i> </h1>
+<p>
+Git is an important part of daily programming (especially if you're working with a team) and is widely used in the software industry.
+
+Since there are many various commands you can use, mastering Git takes time. But some commands are used more frequently (some daily).</p>
+<h2>Git commit</h2><p>
+This is maybe the most-used command of Git. Once we reach a certain point in development, we want to save our changes (maybe after a specific task or issue).
+
+Git commit is like setting a checkpoint in the development process which you can go back to later if needed.
+
+We also need to write a short message to explain what we have developed or changed in the source code.
+
+</p>
+
+
+<h7>git commit -m "commit message"</h7>
+<font><br>Important: Git commit saves your changes only locally.<font>
+
+
+
+<h2>
+ Git push</h2><p>
+After committing your changes, the next thing you want to do is send your changes to the remote server. Git push uploads your commits to the remote repository.</p>
+
+<h7>git push < remote> < branch-name></h7>
+
+<p>
+However, if your branch is newly created, then you also need to upload the branch with the following command:</p>
+
+<h7>git push --set-upstream < remote> <name-of-your-branch></h7><br>
+
+or
+<br>
+<h7>git push -u origin < branch_name></h7><br>
+
+Important: Git push only uploads changes that are committed.
+
+<h2>
+ Git pull</h2><p>
+The git pull command is used to get updates from the remote repo. This command is a combination of git fetch and git merge which means that, when we use git pull, it gets the updates from remote repository (git fetch) and immediately applies the latest changes in your local (git merge).</p>
+
+<h7>git pull < remote></h7>
+<br>
+
+This operation may cause conflicts that you need to solve manually.<div><hr color="tomato"><hr color="tomato"><hr color="tomato">
+</body>
+</html>
